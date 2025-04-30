@@ -8,6 +8,7 @@ from typing import Optional
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
+import json
 
 app = FastAPI()
 
@@ -69,7 +70,8 @@ def generate_plan(user_id: int):
     user = users.get(user_id)
     if not user:
         return {"error": "user not found"}
-    llm_res = call_openai_to_generate_plan(user)
+    llm_res = call_open_ai_mock(user) # for testing this generates a premade plan to save api costs
+    #llm_res = call_openai_to_generate_plan(user) # real command 
     #print(llm_res)
     today = date.today()
     training_plan = []
@@ -94,9 +96,9 @@ def generate_plan(user_id: int):
     return {"status": "plan generated"}
 
 def call_open_ai_mock(user_input) -> list:
-    return [{'date': '2025-04-23', 'workouts': [{'time_of_day': 'Morning', 'sport': 'Run', 'description': 'Interval Training', 'expected_duration': '1 hour', 'warmup': '10 mins easy jog', 'main_set': '5 x 1km at Zone 4 pace with 2 mins rest in between', 'cooldown': '10 mins easy jog', 'tss': 60}, {'time_of_day': 'Afternoon', 'sport': 'Swim', 'description': 'Technique Focus', 'expected_duration': '45 mins', 'warmup': '200m easy swim', 'main_set': '4 x 50m drills', 'cooldown': '200m easy swim', 'tss': 40}]}, {'date': '2025-04-24', 'workouts': [{'time_of_day': 'Morning', 'sport': 'Bike', 'description': 'Long Ride', 'expected_duration': '2.5 hours', 'warmup': '20 mins easy spin', 'main_set': 'Maintain Zone 2 with rolling hills', 'cooldown': '20 mins easy spin', 'tss': 150}]}, {'date': '2025-04-25', 'workouts': [{'time_of_day': 'Morning', 'sport': 'Rest', 'description': 'Active Recovery Day', 'expected_duration': 'n/a', 'warmup': 'n/a', 'main_set': 'n/a', 'cooldown': 'n/a'}]}, {'date': '2025-04-26', 'workouts': [{'time_of_day': 'Morning', 'sport': 'Swim', 'description': 'Threshold Swim', 'expected_duration': '1 hour', 'warmup': '200m easy swim', 'main_set': '4 x 200m at Zone 3 with 20 secs rest', 'cooldown': '200m easy swim', 'tss': 50}, {'time_of_day': 'Afternoon', 'sport': 'Run', 'description': 'Easy Run', 'expected_duration': '45 mins', 'warmup': '10 mins easy jog', 'main_set': 'Maintain Zone 2', 'cooldown': '10 mins easy jog', 'tss': 40}]}, {'date': '2025-04-27', 'workouts': [{'time_of_day': 'Morning', 'sport': 'Bike', 'description': 'Interval Training', 'expected_duration': '1.5 hours', 'warmup': '15 mins easy spin', 'main_set': '5 x 5 mins at Zone 4 with 3 mins rest in between', 'cooldown': 
-'15 mins easy spin', 'tss': 90}]}, {'date': '2025-04-28', 'workouts': [{'time_of_day': 'Morning', 'sport': 'Run', 
-'description': 'Tempo Run', 'expected_duration': '1 hour', 'warmup': '10 mins easy jog', 'main_set': '30 mins at Zone 3 pace', 'cooldown': '10 mins easy jog', 'tss': 60}]}]
+    with open('sample_data.json', 'r') as file:
+        data = json.load(file)
+    return data
 
 def call_openai_to_generate_plan(user_input) -> list:
     print(f"user intput {user_input}")
@@ -138,5 +140,7 @@ def call_openai_to_generate_plan(user_input) -> list:
     reply = response.choices[0].message.content
     print(reply)
     # Parse the response to a list (ideally OpenAI returns a JSON list)
-    import json
+
+    res = json.loads(reply)
+    
     return json.loads(reply)
