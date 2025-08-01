@@ -1,0 +1,54 @@
+/* Update Threshold Modal - extends existing modal styles */
+.threshold-modal {
+  max-width: 500px;
+}
+
+.threshold-form {
+  padding: 0 24px 24px 24px;
+}
+
+.form-description {
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+/* Input Unit */
+.input-unit {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+/* General Error */
+.general-error {
+  text-align: center;
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+/* Update Threshold Button Styling */
+.btn-update-threshold {
+  background: #10b981;
+  color: white;
+}
+
+.btn-update-threshold:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .threshold-modal {
+    margin: 10px;
+    max-width: calc(100vw - 20px);
+  }
+  
+  .threshold-form {
+    padding: 0 16px 16px 16px;
+  }
+} 

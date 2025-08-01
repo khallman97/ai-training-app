@@ -1,0 +1,253 @@
+/* Training Plan Info Panel */
+.training-plan-info {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  min-width: 320px;
+  max-width: 380px;
+}
+
+/* No Plan State */
+.no-plan {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.no-plan-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.no-plan h3 {
+  margin: 0 0 12px 0;
+  color: #374151;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.no-plan p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Plan Header */
+.plan-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.plan-type-icon {
+  font-size: 32px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.plan-title h3 {
+  margin: 0 0 4px 0;
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.plan-goal {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Plan Details */
+.plan-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail-section {
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 16px;
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.detail-section h4 {
+  margin: 0 0 12px 0;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.detail-value {
+  color: #1f2937;
+  font-weight: 600;
+  text-align: right;
+}
+
+.skill-level {
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+/* Countdown */
+.countdown {
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f9fafb;
+  margin-top: 8px;
+}
+
+.days-remaining {
+  color: #059669;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.event-today {
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.event-passed {
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Plan Description */
+.plan-description {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Plan Actions */
+.plan-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px solid #f3f4f6;
+}
+
+.btn-edit-plan,
+.btn-view-calendar {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-edit-plan {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-edit-plan:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.btn-update-threshold {
+  background: #10b981;
+  color: white;
+}
+
+.btn-update-threshold:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+/* Scrollbar Styling */
+.training-plan-info::-webkit-scrollbar {
+  width: 4px;
+}
+
+.training-plan-info::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 2px;
+}
+
+.training-plan-info::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.training-plan-info::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .training-plan-info {
+    min-width: 280px;
+    max-width: 100%;
+    margin: 0 16px;
+  }
+  
+  .plan-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .plan-type-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+  
+  .plan-actions {
+    flex-direction: row;
+  }
+  
+  .btn-edit-plan,
+  .btn-view-calendar {
+    flex: 1;
+  }
+} 
